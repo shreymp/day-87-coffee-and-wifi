@@ -1,0 +1,51 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Cafes{% endblock %}
+
+{% block content %}
+<h1>All Cafes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Cafe Name</th>
+      <th>Map Link</th>
+      <th>Image Link</th>
+      <th>Location</th>
+      <th>Has Sockets?</th>
+      <th>Has Toilets?</th>
+      <th>Has Wifi?</th>
+      <th>Can Take Calls?</th>
+      <th>Number of Seats</th>
+      <th>Coffee Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cafe_obj in list_of_cafes %}
+
+    <tr scope="row">
+      <th scope="row">{{cafe_obj.id}}</th>
+      <td>{{cafe_obj.name}}</td>
+      <td><a href="{{cafe_obj.map_url}}">Google Maps Link</a></td>
+      <td><a href="{{cafe_obj.img_url}}">Image Link</a></td>
+      <td>{{cafe_obj.location}}</td>
+
+      <td>{{cafe_obj.has_sockets}}</td>
+      <td>{{cafe_obj.has_toilet}}</td>
+      <td>{{cafe_obj.has_wifi}}</td>
+      <td>{{cafe_obj.can_take_calls}}</td>
+
+      <td>{{cafe_obj.seats}}</td>
+      <td>{{cafe_obj.coffee_price}}</td>
+    </tr>
+    <br>
+    {% endfor %}
+  </tbody>
+
+  <!-- This is where you will write the code to render a Bootstrap
+          Table that contains all the information from the
+          cafe-data.csv file. -->
+</table>
+
+<p><a href="{{  url_for('home')  }}">Return to index page</a></p>
+{% endblock %}
